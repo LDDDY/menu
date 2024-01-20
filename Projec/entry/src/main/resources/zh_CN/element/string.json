@@ -11,6 +11,14 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "title_food_list",
+      "value": "全部菜谱"
+    },
+    {
+      "name": "title_food_rank",
+      "value": "最热排名"
     }
   ]
 }
