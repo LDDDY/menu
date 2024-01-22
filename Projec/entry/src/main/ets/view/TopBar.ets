@@ -30,6 +30,5 @@ export default struct TopBar {
     .justifyContent(FlexAlign.Start)
     .backgroundColor('#FF1f3f5')
     .height(56)
-
   }
 }

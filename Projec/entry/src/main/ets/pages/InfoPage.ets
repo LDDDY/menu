@@ -8,6 +8,14 @@ import media from '@ohos.multimedia.media';
 @Component
 struct InfoPage {
   // @State mainPageRouterParam: FoodData = router.getParams() as FoodData
+  @State
+  private foodItem :FoodData = new FoodData("-1","菜品名称","菜品介绍",0)
+
+  onPageShow(){
+    let params:FoodData= router.getParams() as FoodData;
+    if(params!=null&& params!=undefined)
+      this.foodItem = params;
+  }
 
   build() {
     Column() {
@@ -17,7 +25,7 @@ struct InfoPage {
       Row(){
         Column(){
           Row() {
-            Text('Undefined')
+            Text(this.foodItem.foodName)
               .fontSize(30)
               .fontWeight(FontWeight.Bold)
               .margin({top:'5%', left:'10%'})
@@ -39,7 +47,7 @@ struct InfoPage {
           }
           .height('10%')
           Row() {
-            Text('菜品介绍')
+            Text(this.foodItem.description)
           }.height('40%')
         }
       }
@@ -57,7 +65,7 @@ struct InfoPage {
           .height('60%')
           .onClick(() => {
             // router.pushUrl({url:"",params:{}})
-            router.pushUrl({url: ""})
+            router.pushUrl({url: "pages/DetailPage"})
           })
       }.alignItems(VerticalAlign.Bottom).height('10%')
     }.height('100%')

@@ -3,12 +3,13 @@ import ArrayList from '@ohos.util.ArrayList';
 import FoodData from '../model/ItemData'
 import { FoodArray } from '../mock/Data';
 import router from '@ohos.router';
+import { BorderRadius } from '../common/Constances';
+import Prompt from '@system.prompt';
 
 @Component
 struct FoodListItem{
   private foodItem?:FoodData
   build(){
-    Navigator({ target: '#' }) {
       //应该导航到详情界面去
       Row() {
         Text((this.foodItem?.id))
@@ -26,10 +27,13 @@ struct FoodListItem{
           .width('50%')
         Blank()
       }
+      .onClick(()=>{
+        //此处跳转到食谱详情
+        router.pushUrl({url:"pages/InfoPage",params: this.foodItem})
+      })
       .hoverEffect(HoverEffect.Highlight)
       .height(64)
       .width('100%')
-    }
   }
 }
 
@@ -62,7 +66,7 @@ struct RankPage{
           }
         })
       }
-      .height('90%')
+      .height('92%')
     }
   }
 }
@@ -75,6 +79,7 @@ struct FoodGridItem{
       Row(){
         Image(this.foodItem!.image!)
           .objectFit(ImageFit.Contain)
+          .height("70%")
           .width('80%')
           .margin({left:"10%"}).padding({top:10,bottom:10})
       }
@@ -82,20 +87,22 @@ struct FoodGridItem{
       .backgroundColor('#e9e6f2ff')
       Row(){
         Text(this.foodItem!.foodName)
-          .fontSize(16)
+          .fontSize(14)
           .fontColor(Color.Black)
           .width("100%")
           .textAlign(TextAlign.Center)
           .padding({top:10,bottom:10})
       }
       .width('90%')
-      .backgroundColor('#E5E5E5')
     }
-    .height(180)
+    .borderWidth(1)
+    .borderColor("#ff828485")
+    .borderRadius(20)
+    .height(120)
     .clip(new Rect({ width: '100%', height: '100%', radius: 12 }))
     .onClick(()=>{
       //此处跳转到食谱详情
-      router.pushUrl({url:"",params:{food:this.foodItem}})
+      router.pushUrl({url:"pages/InfoPage",params: this.foodItem})
     })
   }
 }
@@ -120,11 +127,138 @@ struct IndexPage{
       }
       .height("90%")
       .margin({top:20})
-      .columnsTemplate("1fr 1fr")
+      .rowsTemplate("1fr 1fr 1fr 1fr")
+      .columnsTemplate("1fr 1fr 1fr")
       .columnsGap(10)
       .rowsGap(10)
     }
     .height("100%")
+  }
+}
+
+@Component
+struct createItem{
+  build(){
+      Row(){
+        Column(){
+          Image($r("app.media.add"))
+            .autoResize(true)
+            .borderRadius(50)
+            .borderWidth(1)
+            .borderStyle(BorderStyle.Solid)
+        }
+        .width(80)
+        .height(80)
+        Column(){
+          Text("创建一个自己的新菜谱")
+            .fontSize(16)
+        }
+        .margin({left:20})
+      }
+      .padding(10)
+      .margin({top:20,left:"2.5%"})
+      .borderWidth(2)
+      .borderRadius(BorderRadius)
+      .borderStyle(BorderStyle.Dashed)
+      .width("95%")
+      .height("20%")
+      .onClick(()=>{
+        console.info(`Successfully click the recipe_add btn.`)
+        router.pushUrl({url:'pages/OriginalRecipe_AddRecipe'})
+      })
+  }
+}
+
+@Component
+struct createPage{
+  @State
+  private array: Array<string[]> = [["1","11","111"],["2","22","222"],["3","33","333"]];
+  private recipe_foodtype:string="";
+  private recipe_step:string="";
+
+  build(){
+    Column(){
+      Navigation() {
+        List({ space: 12 }) {
+          ForEach(this.array, (item: string[]) => {
+            ListItem() {
+              NavRouter() {
+                Text(item[0])
+                  .width("100%")
+                  .height(72)
+                  .backgroundColor('#FFFFFF')
+                  .borderRadius(24)
+                  .fontSize(16)
+                  .fontWeight(500)
+                  .textAlign(TextAlign.Center)
+
+                NavDestination() {
+                  Column({space:30}){
+                    TextArea({text:item[1]})
+                      .height("40%")
+                      .onChange((recipe_foodtype)=>{
+                        this.recipe_foodtype=recipe_foodtype;
+                      })
+
+
+                    TextArea({text:item[2]})
+                      .height("40%")
+                      .onChange((recipe_step)=>{
+                        this.recipe_step=recipe_step;
+                      })
+                  }
+
+                  Button(){
+                    Image($r("app.media.recipe_delete"))
+                      .width(40)
+                      .height(40)
+                  }
+                  .backgroundColor(Color.Red)
+                  .width(50)
+                  .height(50)
+                  .position({x:'75%',y:'70%'})
+                  .onClick(()=>{
+                    // OriginalRecipe_DataBase.get().delete(item[0]);
+                    router.replaceUrl({
+                      url : "pages/OriginalRecipe_MainPage"
+                    });
+                    Prompt.showToast({
+                      message:"删除成功",
+                    })
+                  })
+
+                  Button(){
+                    Image($r("app.media.recipe_storeW"))
+                      .width(40)
+                      .height(40)
+                  }
+                  .width(50)
+                  .height(50)
+                  .position({x:'75%',y:'88%'})
+                  .onClick(()=>{
+                    // OriginalRecipe_DataBase.get().update(item[0],this.recipe_foodtype,this.recipe_step);
+                    Prompt.showToast({
+                      message:"更新成功",
+                    })
+                  })
+                }
+                .title(item[0])
+              }
+            }
+            .borderWidth(1)
+            .width("95%")
+            .margin({left:"2.5%"})
+            .borderRadius(10)
+          }, (item: string): string => item)
+          ListItem(){
+            createItem()
+          }
+        }
+      }
+      .title('原创食谱')
+      .titleMode(NavigationTitleMode.Full)
+      .mode(NavigationMode.Auto)
+    }
   }
 }
 
@@ -141,9 +275,10 @@ export default struct MainPage{
         .textAlign(TextAlign.Center)
         .decoration(this.currentIndex == targetIndex?{type:TextDecorationType.Underline, color: Color.Blue }: { type:TextDecorationType.None,color:Color.Black })
         .fontSize(20)
+        .fontWeight(this.currentIndex == targetIndex?FontWeight.Bold:FontWeight.Normal)
         .fontColor(this.currentIndex == targetIndex?Color.Blue:Color.Black)
     }
-    .backgroundColor(this.currentIndex == targetIndex?"#ff69c2ef":Color.White)
+    .backgroundColor(this.currentIndex == targetIndex?"#ff69c2ef":'#FF1f3f5')
     .height('100%')
     .width('100%')
     .borderColor({top:2})
@@ -163,17 +298,13 @@ export default struct MainPage{
       }
       .tabBar(this.tabBuilder('主页',0))
       TabContent(){
-
-      }
-      .tabBar(this.tabBuilder('热门',1))
-      TabContent(){
         RankPage()
       }
-      .tabBar(this.tabBuilder('排行',2))
+      .tabBar(this.tabBuilder('排行',1))
       TabContent(){
-
+        createPage()
       }
-      .tabBar(this.tabBuilder('原创',3))
+      .tabBar(this.tabBuilder('原创',2))
     }
     .barHeight("8%")
     .height("100%")

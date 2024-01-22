@@ -19,6 +19,10 @@
     {
       "name": "title_food_rank",
       "value": "最热排名"
+    },
+    {
+      "name": "title_food_create",
+      "value": "创建食谱"
     }
   ]
 }
