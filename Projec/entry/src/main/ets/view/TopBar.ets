@@ -2,7 +2,7 @@ import router from '@ohos.router';
 
 @Component
 export default struct TopBar {
-  title: string = ''
+  title: string | Resource = ''
 
   build() {
     Row() {

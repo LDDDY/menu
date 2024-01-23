@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "View_recipe_button",
+      "value": "查看菜谱"
+    },
+    {
+      "name": "Food_description_title",
+      "value": "菜品介绍"
+    },
+    {
+      "name": "Food_desc_subtitle",
+      "value": "介绍"
     }
   ]
 }

@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "View_recipe_button",
+      "value": "Recipe"
+    },
+    {
+      "name": "Food_description_title",
+      "value": "Description"
+    },
+    {
+      "name": "Food_desc_subtitle",
+      "value": "Description"
     }
   ]
 }
