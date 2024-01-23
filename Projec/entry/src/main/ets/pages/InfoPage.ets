@@ -1,7 +1,6 @@
 import router from '@ohos.router';
 import TopBar from '../view/TopBar';
 import FoodData from '../model/ItemData'
-import media from '@ohos.multimedia.media';
 
 
 @Entry
@@ -20,7 +19,7 @@ struct InfoPage {
   build() {
     Column() {
       Row() {
-        TopBar({title: '菜品介绍'})
+        TopBar({title: $r('app.string.Food_description_title')})
       }
       Row(){
         Column(){
@@ -33,7 +32,7 @@ struct InfoPage {
           }
           .height('10%')
           Row() {
-            Image($r("app.media.kongpaochicken"))
+            Image(this.foodItem.image)
               .objectFit(ImageFit.Cover)
               .width('80%')
           }
@@ -55,7 +54,7 @@ struct InfoPage {
       .alignItems(VerticalAlign.Top)
       Row() {
           Button() {
-            Text('查看菜谱')
+            Text($r("app.string.View_recipe_button"))
               .fontSize(25)
               .fontWeight(FontWeight.Bold)
           }
