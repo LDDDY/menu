@@ -64,7 +64,7 @@ struct InfoPage {
           .height('60%')
           .onClick(() => {
             // router.pushUrl({url:"",params:{}})
-            router.pushUrl({url: "pages/DetailPage"})
+            router.pushUrl({url: "pages/DetailPage",params:this.foodItem})
           })
       }.alignItems(VerticalAlign.Bottom).height('10%')
     }.height('100%')

@@ -1,4 +1,5 @@
 import image from '@ohos.multimedia.image';
+import IngredientsDetailsData from './IngredientsDetailsData';
 
 export enum CategoryId{
   HotFood = 0,
@@ -14,6 +15,7 @@ export default class FoodData{
   description: string = "";
   image:Resource|null = $r("app.media.icon")
   CategoryId : CategoryId = CategoryId.HotFood;
+  DetailData : IngredientsDetailsData = new IngredientsDetailsData([],[],[],"","","","");
 
   constructor(id:string ,foodName:string,desc:string,category:CategoryId) {
     this.foodName = foodName;

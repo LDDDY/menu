@@ -1,4 +1,6 @@
+import router from '@ohos.router'
 import IngredientsDetailsData from '../model/IngredientsDetailsData'
+import FoodData from '../model/ItemData'
 
 @Preview
 @Component
@@ -14,7 +16,8 @@ export default struct IngredientsDetailsListItemView {
   time: string = '十分钟'
   diffi: string = '简单'
 
-  data: IngredientsDetailsData = new IngredientsDetailsData(this.main, this.aux, this.fla, this.flavor, this.tech, this.time, this.diffi)
+  foodItem :FoodData = router.getParams() as FoodData;
+  data: IngredientsDetailsData = this.foodItem.DetailData;
 
   build() {
     Column() {

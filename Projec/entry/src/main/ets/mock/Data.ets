@@ -1,9 +1,16 @@
+import IngredientsDetailsData from '../model/IngredientsDetailsData'
 import FoodData, { CategoryId } from '../model/ItemData'
 
 export let hot1: FoodData = new FoodData("1","宫保鸡丁","经典川菜，主料鸡肉",CategoryId.HotFood)
 hot1.image = $r("app.media.food_kongpaochicken")
+hot1.DetailData = new IngredientsDetailsData([['鸡胸脯肉', '适量']], [['黄瓜', '半根'], ['花生', '一小碗半'], ['胡萝卜', '半根']],
+  [['盐', '2匙'], ['生抽', '2勺'], ['老抽', '1勺'], ['豆瓣酱', '2勺'], ['料酒', '适量'], ['嫩肉粉（生粉）', '适量']], '咸鲜',
+  "炒", "十分钟", "简单")
 export let hot2: FoodData = new FoodData("2","孜然土豆牛肉","土豆、牛肉",CategoryId.HotFood)
 hot2.image = ($r("app.media.food_beefpotato"))
+hot2.DetailData = new IngredientsDetailsData([['鸡胸脯肉', '适量']], [['黄瓜', '半根'], ['花生', '一小碗半'], ['胡萝卜', '半根']],
+  [['盐', '2匙'], ['生抽', '100勺'], ['老抽', '1勺'], ['豆瓣酱', '2勺'], ['料酒', '适量'], ['嫩肉粉（生粉）', '适量']], '咸鲜',
+  "炒", "十分钟", "简单")
 export let cold1: FoodData = new FoodData("3","凉拌菠菜","爽口凉菜",CategoryId.ColdFood)
 cold1.image = ($r("app.media.food_spinach"))
 export let cold2: FoodData = new FoodData('4',"拍黄瓜","爽口凉菜",CategoryId.ColdFood)
