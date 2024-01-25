@@ -1,21 +1,15 @@
+import FoodData from '../model/ItemData';
+import router from '@ohos.router';
 
 @Component
 export default struct Instruction {
   scroller: Scroller = new Scroller();
-  private arr: string[] = [
-    "1. 先把鸡肉切成丁，并用生粉和料酒进行腌制",
-    "2. 接着生抽和老抽混合好并且兑上水，可以放适当的白糖。",
-    "3. 将胡萝卜和黄瓜切成丁备用",
-    "4. 油烧热后放入鸡丁，炒至变色后加入混合调料液。",
-    "5. 然后倒入胡萝卜和黄瓜，并加盐翻炒。",
-    "6. 收汁之后加入花生。",
-    "7. 搅拌均匀之后，就可以出锅了。"
-  ];
+  private foodItem: FoodData = router.getParams() as FoodData
 
   build(){
     Scroll(this.scroller) {
       Column() {
-        ForEach(this.arr, (item?:number|undefined) => {
+        ForEach(this.foodItem.InstructionData.instructions, (item: string) => {
           if(item){
             Text(item.toString())
               .width('90%')
