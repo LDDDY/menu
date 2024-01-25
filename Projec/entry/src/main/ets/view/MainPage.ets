@@ -228,7 +228,7 @@ struct createPage{
                     this.array.remove(item)
                     // OriginalRecipe_DataBase.get().delete(item[0]);
                     router.replaceUrl({
-                      url : "pages/OriginalRecipe_MainPage"
+                      url : "pages/Index"
                     });
                     Prompt.showToast({
                       message:"删除成功",
