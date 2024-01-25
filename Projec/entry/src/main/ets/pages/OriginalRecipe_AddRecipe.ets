@@ -10,6 +10,7 @@ struct OriginalRecipe_AddRecipe {
   private recipe_name:string="";
   private recipe_foodtype:string="";
   private recipe_step:string="";
+  return_value:string[]=[];
 
   build() {
     Column({space:30}) {
@@ -46,7 +47,8 @@ struct OriginalRecipe_AddRecipe {
         .onClick(()=>{
           if(this.recipe_name!=""&&this.recipe_foodtype!=""&&this.recipe_step!=""){
             // OriginalRecipe_DataBase.get().add(this.recipe_name,this.recipe_foodtype,this.recipe_step)
-            router.back()
+            this.return_value = [this.recipe_name,this.recipe_foodtype,this.recipe_step];
+            router.pushUrl({url:'pages/Index',params:this.return_value});
             Prompt.showToast({
               message:"保存成功",
             })

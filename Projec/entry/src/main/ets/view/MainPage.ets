@@ -1,7 +1,7 @@
 import { DEFAULT } from '@ohos/hypium';
 import ArrayList from '@ohos.util.ArrayList';
 import FoodData from '../model/ItemData'
-import { FoodArray } from '../mock/Data';
+import { FoodArray, initList } from '../mock/Data';
 import router from '@ohos.router';
 import { BorderRadius } from '../common/Constances';
 import Prompt from '@system.prompt';
@@ -172,15 +172,22 @@ struct createItem{
 @Component
 struct createPage{
   @State
-  private array: Array<string[]> = [["1","11","111"],["2","22","222"],["3","33","333"]];
+  private array: ArrayList<string[]> = initList;
   private recipe_foodtype:string="";
   private recipe_step:string="";
 
+  private get_new_recipe :string[] = router.getParams() as string[];
+
+  aboutToAppear(){
+    if(this.get_new_recipe!=null){
+      this.array.add(this.get_new_recipe);
+    }
+  }
   build(){
     Column(){
       Navigation() {
         List({ space: 12 }) {
-          ForEach(this.array, (item: string[]) => {
+          ForEach(this.array.convertToArray(), (item: string[]) => {
             ListItem() {
               NavRouter() {
                 Text(item[0])
@@ -218,6 +225,7 @@ struct createPage{
                   .height(50)
                   .position({x:'75%',y:'70%'})
                   .onClick(()=>{
+                    this.array.remove(item)
                     // OriginalRecipe_DataBase.get().delete(item[0]);
                     router.replaceUrl({
                       url : "pages/OriginalRecipe_MainPage"
@@ -236,6 +244,7 @@ struct createPage{
                   .height(50)
                   .position({x:'75%',y:'88%'})
                   .onClick(()=>{
+                    this.array[this.array.getIndexOf(item)] = [item[0],this.recipe_foodtype,this.recipe_step];
                     // OriginalRecipe_DataBase.get().update(item[0],this.recipe_foodtype,this.recipe_step);
                     Prompt.showToast({
                       message:"更新成功",
