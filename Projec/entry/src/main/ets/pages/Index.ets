@@ -1,5 +1,10 @@
 import MainPage from '../view/MainPage';
 
+interface deco_params{
+  type: TextDecorationType;
+  color?: ResourceColor;
+}
+
 @Entry
 @Component
 struct Index {
@@ -13,9 +18,21 @@ struct Index {
         .width("100%")
         .height('100%')
         .textAlign(TextAlign.Center)
-        .decoration(this.currentIndex == targetIndex?{type:TextDecorationType.Underline, color: Color.Blue }: { type:TextDecorationType.None,color:Color.Black })
+        .decoration((() => {
+          if(this.currentIndex == targetIndex){
+            return {type: TextDecorationType.Underline, color: Color.Blue} as deco_params;
+          } else {
+            return {type: TextDecorationType.None, color: Color.Black} as deco_params;
+          }
+        })())
         .fontSize(20)
-        .fontColor(this.currentIndex == targetIndex?Color.Blue:Color.Black)
+        .fontColor((() => {
+          if(this.currentIndex == targetIndex){
+            return Color.Blue;
+          } else {
+            return Color.Black;
+          }
+        })())
     }
     .height('100%')
     .width('100%')
