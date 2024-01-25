@@ -4,7 +4,7 @@ import router from '@ohos.router';
 @Component
 export default struct Instruction {
   private foodItem: FoodData = router.getParams() as FoodData
-  private swiperController: SwiperController = new SwiperController();
+  private swiperController: SwiperController = new SwiperController()
   private instructions: string[] = this.foodItem.InstructionData.instructions
 
   build(){

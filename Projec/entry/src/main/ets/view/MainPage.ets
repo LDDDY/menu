@@ -3,7 +3,7 @@ import ArrayList from '@ohos.util.ArrayList';
 import FoodData from '../model/ItemData'
 import { FoodArray, initList } from '../mock/Data';
 import router from '@ohos.router';
-import { BorderRadius } from '../common/Constances';
+import { BorderRadius } from '../common/Constants';
 import Prompt from '@system.prompt';
 
 @Component
