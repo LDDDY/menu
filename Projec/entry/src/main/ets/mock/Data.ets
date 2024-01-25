@@ -1,6 +1,7 @@
 import IngredientsDetailsData from '../model/IngredientsDetailsData'
 import InstructionData from '../model/InstructionData'
 import FoodData, { CategoryId } from '../model/ItemData'
+import { dishesDesc } from './DishesDescData'
 
 export let hot1: FoodData = new FoodData("1", "宫保鸡丁", "经典川菜，主料鸡肉", CategoryId.HotFood);
 hot1.image = $r("app.media.food_kongpaochicken");
@@ -23,6 +24,7 @@ hot1.InstructionData = new InstructionData([
   "7. 搅拌均匀之后，就可以出锅了。",
   "8. Test"
 ]);
+hot1.detailedDesc = dishesDesc['kpchicken']
 
 export let hot2: FoodData = new FoodData("2", "孜然土豆牛肉", "土豆、牛肉", CategoryId.HotFood);
 hot2.image = ($r("app.media.food_beefpotato"));
@@ -35,6 +37,7 @@ hot2.DetailData = new IngredientsDetailsData(
   '一小时',
   '简单'
 );
+hot2.detailedDesc = dishesDesc['beefpotato']
 
 export let cold1: FoodData = new FoodData("3", "凉拌菠菜", "爽口凉菜", CategoryId.ColdFood);
 cold1.image = ($r("app.media.food_spinach"));
@@ -47,6 +50,7 @@ cold1.DetailData = new IngredientsDetailsData(
   '十分钟',
   '简单'
 );
+cold1.detailedDesc = dishesDesc['spinach']
 
 export let cold2: FoodData = new FoodData('4', "拍黄瓜", "爽口凉菜", CategoryId.ColdFood);
 cold2.image = ($r("app.media.food_cucumber"));
@@ -58,6 +62,7 @@ cold2.DetailData = new IngredientsDetailsData(
   '十分钟',
   '简单'
 );
+cold2.detailedDesc = dishesDesc['cucumber']
 
 export let soup1: FoodData = new FoodData('5', "紫菜鸡蛋汤", "汤", CategoryId.Soup);
 soup1.image = ($r("app.media.food_eggsoup"));
@@ -70,6 +75,7 @@ soup1.DetailData = new IngredientsDetailsData(
   '十分钟',
   '简单'
 );
+soup1.detailedDesc = dishesDesc['eggsoup']
 
 export let snack1: FoodData = new FoodData('6', "炸红薯球", "小吃", CategoryId.Snack);
 snack1.image = ($r("app.media.food_sweetpotato"));
@@ -82,6 +88,7 @@ snack1.DetailData = new IngredientsDetailsData(
   '一小时',
   '简单'
 );
+snack1.detailedDesc = dishesDesc['sweetpotato']
 
 export let snack2: FoodData = new FoodData('7', "黑椒鸡块", "小吃", CategoryId.Snack);
 snack2.image = ($r("app.media.food_friedchicken"));
@@ -94,6 +101,7 @@ snack2.DetailData = new IngredientsDetailsData(
   '半小时',
   '普通'
 );
+snack2.detailedDesc = dishesDesc['firedchicken']
 
 export let dessert1: FoodData = new FoodData('8', "舒芙蕾", "甜点", CategoryId.Dessert);
 dessert1.image = ($r("app.media.food_souffle"));
@@ -106,6 +114,7 @@ dessert1.DetailData = new IngredientsDetailsData(
   '一小时',
   '普通'
 );
+dessert1.detailedDesc = dishesDesc['souffle']
 
 export let dessert2: FoodData = new FoodData('9', "牛角包", "甜点", CategoryId.Dessert);
 dessert2.image = ($r("app.media.food_croissant"));
@@ -118,6 +127,7 @@ dessert2.DetailData = new IngredientsDetailsData(
   '数小时',
   '简单'
 );
+dessert2.detailedDesc = dishesDesc['croissant']
 
 export let hot3: FoodData = new FoodData('10', "毛血旺", "热菜", CategoryId.HotFood);
 hot3.image = ($r("app.media.food_maoxuewang"));
@@ -130,6 +140,7 @@ hot3.DetailData = new IngredientsDetailsData(
   '一小时',
   '普通'
 );
+hot3.detailedDesc = dishesDesc['maoxuewang']
 
 export let hot4: FoodData = new FoodData('11', "油闷大虾", "热菜",CategoryId.HotFood);
 hot4.image = ($r("app.media.food_prawn"));
@@ -142,9 +153,10 @@ hot4.DetailData = new IngredientsDetailsData(
   '半小时',
   '普通'
 );
+hot4.detailedDesc = dishesDesc['prawn']
 
 export let soup2: FoodData = new FoodData('12', "紫米粥", "汤", CategoryId.Soup);
-soup2.image = ($r("app.media.food_zimisoup"));
+soup2.image = ($r("app.media.food_zimi"));
 soup2.DetailData = new IngredientsDetailsData(
   [['黑米', '3手把'], ['黑糯米', '2手把'], ['黑豆', '少许'], ['薏米', '3手把'], ['百合', '少许'], ['莲子', '10粒'], ['斑豆', '少许'], ['核桃仁', '少许'], ['糙米', '2手把'], ['黑芝麻', '1手把']],
   [['冰糖', '80g']],
@@ -154,6 +166,7 @@ soup2.DetailData = new IngredientsDetailsData(
   '一天',
   '简单'
 );
+soup2.detailedDesc = dishesDesc['zimi']
 
 export let FoodArray: Array<FoodData> = [
   hot1,
