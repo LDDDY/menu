@@ -18,6 +18,7 @@ export default class FoodData{
   CategoryId : CategoryId = CategoryId.HotFood;
   DetailData : IngredientsDetailsData = new IngredientsDetailsData([],[],[],"","","","");
   InstructionData : InstructionData = new InstructionData([]);
+  detailedDesc: string = "";
 
   constructor(id : string, foodName : string, desc : string, category : CategoryId) {
     this.foodName = foodName;
