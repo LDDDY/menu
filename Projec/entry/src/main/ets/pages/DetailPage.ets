@@ -1,6 +1,5 @@
 import IngredientsDetailsListItemView from '../view/IngredientsDetailsListItemVIew'
 import Instruction from '../view/Instruction'
-import InstructionPage from '../view/Instruction'
 import TopBar from '../view/TopBar'
 
 @Entry

@@ -1,6 +1,19 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:\\Users\\hydz2\\.ohos\\config\\openharmony\\auto_ohos_default_Projec_com.example.project.cer",
+          "storePassword": "00000019528A7BE4B8B21011F46FEF1ACE8DEDFAB492126D3AE9F6AB3D30258D91F4A2D362D7AD78B5",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001901856270FEAB9B374146B98DE4E5B2765787A54D8F85BE86F3309909FE6AC9071A4C71D117",
+          "profile": "C:\\Users\\hydz2\\.ohos\\config\\openharmony\\auto_ohos_default_Projec_com.example.project.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\hydz2\\.ohos\\config\\openharmony\\auto_ohos_default_Projec_com.example.project.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
