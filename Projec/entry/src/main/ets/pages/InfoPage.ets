@@ -36,9 +36,9 @@ struct InfoPage {
               .objectFit(ImageFit.Cover)
               .width('80%')
           }
-          .height('40%')
+          .height('35%')
           Row() {
-            Text('介绍：')
+            Text($r('app.string.Food_desc_subtitle'))
               .fontSize(25)
               .fontWeight(FontWeight.Bold)
               .margin({left:'10%'})
@@ -46,8 +46,14 @@ struct InfoPage {
           }
           .height('10%')
           Row() {
-            Text(this.foodItem.description)
-          }.height('40%')
+            Text(this.foodItem.detailedDesc)
+              .margin({left: '10%', right: "10%"})
+              .fontSize(18)
+              .lineHeight(30)
+              .textOverflow({overflow: TextOverflow.Ellipsis})
+          }
+          .height('45%')
+          .alignItems(VerticalAlign.Top)
         }
       }
       .height('80%')
