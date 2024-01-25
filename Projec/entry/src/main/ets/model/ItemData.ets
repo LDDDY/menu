@@ -16,6 +16,7 @@ export default class FoodData{
   image:Resource|null = $r("app.media.icon")
   CategoryId : CategoryId = CategoryId.HotFood;
   DetailData : IngredientsDetailsData = new IngredientsDetailsData([],[],[],"","","","");
+  detailedDesc: string = "";
 
   constructor(id:string ,foodName:string,desc:string,category:CategoryId) {
     this.foodName = foodName;
