@@ -200,19 +200,33 @@ struct createPage{
                   .textAlign(TextAlign.Center)
 
                 NavDestination() {
-                  Column({space:30}){
-                    TextArea({text:item[1]})
-                      .height("40%")
-                      .onChange((recipe_foodtype)=>{
-                        this.recipe_foodtype=recipe_foodtype;
-                      })
-
-
-                    TextArea({text:item[2]})
-                      .height("40%")
-                      .onChange((recipe_step)=>{
-                        this.recipe_step=recipe_step;
-                      })
+                  Column({space:20}){
+                    Column(){
+                      Text("食材及用量")
+                      TextArea({text:item[1]})
+                        .height("30%")
+                        .onChange((recipe_foodtype)=>{
+                          this.recipe_foodtype=recipe_foodtype;
+                        })
+                        .padding(10)
+                        .margin({top:20,left:"2.5%",right:"2.5%"})
+                        .borderWidth(2)
+                        .borderRadius(BorderRadius)
+                        .borderStyle(BorderStyle.Solid)
+                    }
+                    Column(){
+                      Text("步骤")
+                      TextArea({text:item[2]})
+                        .height("43%")
+                        .onChange((recipe_step)=>{
+                          this.recipe_step=recipe_step;
+                        })
+                        .padding(10)
+                        .margin({top:20,left:"2.5%",right:"2.5%"})
+                        .borderWidth(2)
+                        .borderRadius(BorderRadius)
+                        .borderStyle(BorderStyle.Solid)
+                    }
                   }
 
                   Button(){
@@ -223,7 +237,7 @@ struct createPage{
                   .backgroundColor(Color.Red)
                   .width(50)
                   .height(50)
-                  .position({x:'75%',y:'70%'})
+                  .position({x:'30%',y:'91%'})
                   .onClick(()=>{
                     this.array.remove(item)
                     // OriginalRecipe_DataBase.get().delete(item[0]);
@@ -242,7 +256,7 @@ struct createPage{
                   }
                   .width(50)
                   .height(50)
-                  .position({x:'75%',y:'88%'})
+                  .position({x:'60%',y:'91%'})
                   .onClick(()=>{
                     this.array[this.array.getIndexOf(item)] = [item[0],this.recipe_foodtype,this.recipe_step];
                     // OriginalRecipe_DataBase.get().update(item[0],this.recipe_foodtype,this.recipe_step);
